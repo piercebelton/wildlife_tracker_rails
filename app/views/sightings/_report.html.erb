@@ -1,0 +1,13 @@
+<form action="/sightings" method="get">
+  <label for="start_date">Start date</label>
+  <input id="start_date" name="start_date" type="text">
+  <label for="end_date">End date</label>
+  <input id="end_date" name="end_date" type="text">
+  <label for="region">Region</label>
+  <select name="region">
+    <% @regions_for_select.each do |region| %>
+      <option value="<%= region[0] %>"><%= region[0] %></option>
+    <% end %>
+  </select>
+  <button>Run report</button>
+</form>

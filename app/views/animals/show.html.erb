@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>C name:</strong>
+  <%= @animal.c_name %>
+</p>
+
+<p>
+  <strong>L name:</strong>
+  <%= @animal.l_name %>
+</p>
+
+<p>
+  <strong>Kingdom:</strong>
+  <%= @animal.kingdom %>
+</p>
+
+<%= link_to 'New Sighting', new_sighting_path + "?animal_id=#{@animal.id}" %> |
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>
+
+<div id='sighting_table'>
+  <table>
+    <thead>
+      <tr>
+        <th>Sighting time</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Animal</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @animal.sightings.each do |sighting| %>
+        <tr>
+          <td><%= sighting.sighting_time %></td>
+          <td><%= sighting.latitude %></td>
+          <td><%= sighting.longitude %></td>
+          <td><%= sighting.animal.c_name %></td>
+          <td><%= link_to 'Show', sighting %></td>
+          <td><%= link_to 'Edit', edit_sighting_path(sighting) %></td>
+          <td><%= link_to 'Destroy', sighting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
