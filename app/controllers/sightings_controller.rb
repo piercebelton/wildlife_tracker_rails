@@ -15,6 +15,15 @@ class SightingsController < ApplicationController
     end
   end
 
+  def get_events
+    @sightings = Sighting.all
+    events = []
+    @sightings.each do |sighting|
+      events << { id: sighting.id, start: sighting.sighting_time, title: sighting.animal.c_name, url: Rails.application.routes.url_helpers.sighting_path(sighting.id)}
+    end
+    render :json => events.to_json
+  end
+
   # GET /sightings/1
   # GET /sightings/1.json
   def show

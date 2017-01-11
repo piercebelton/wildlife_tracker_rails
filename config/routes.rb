@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :sightings
+  resources :sightings do
+    get 'get_events', on: :collection
+  end
   resources :animals
   root 'animals#index'
   # The priority is based upon order of creation: first created -> highest priority.
